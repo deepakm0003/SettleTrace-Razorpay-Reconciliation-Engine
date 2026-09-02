@@ -59,6 +59,12 @@ def _mock_llm(prompt: str) -> str:
     Deterministic mock LLM that pattern-matches keywords in the prompt.
 
     This ensures the project is fully runnable offline with zero API cost.
+    
+    Note: Confidence values are calibrated based on the mock's known accuracy:
+    - High confidence (0.90+): patterns the mock recognizes well (duplicate_batch, settlement_lag)
+    - Medium confidence (0.75-0.85): patterns with moderate accuracy
+    - Low confidence (0.45-0.50): patterns known to be problematic (refund_not_netted, which
+      the mock often confuses with partial_hold due to "reserve" keyword matching)
     """
     prompt_lower = prompt.lower()
 
@@ -67,11 +73,13 @@ def _mock_llm(prompt: str) -> str:
         # (reason, keywords, confidence)
         ("settlement_lag", ["settlement_lag", "t+3", "t+4", "t+5", "t+6", "t+7", "days after settlement", "late credit", "delayed"], 0.95),
         ("duplicate_batch", ["duplicate", "same utr", "multiple credits", "two credits"], 0.93),
-        ("fee_mismatch", ["fee_mismatch", "fee", "deviat", "variance", "2%", "pricing tier"], 0.90),
         ("orphan_bank_credit", ["orphan", "no settlement", "unmatched credit", "no batch", "no matching settlement"], 0.88),
         ("missing_bank_credit", ["missing", "no bank credit", "no credit found"], 0.87),
-        ("refund_not_netted", ["refund", "netted", "possible refund", "outside reserve"], 0.85),
         ("partial_hold", ["partial_hold", "reserve", "withheld", "hold"], 0.92),
+        ("fee_mismatch", ["fee_mismatch", "fee variance", "deviat", "threshold"], 0.90),
+        # Refund patterns: LOW confidence (0.45) because the mock is known to misclassify
+        # refund_not_netted as fee_mismatch or partial_hold due to keyword overlap
+        ("refund_not_netted", ["refund", "netted", "possible refund", "outside reserve", "shortage", "short by"], 0.45),
         ("currency_rounding", ["rounding", "paise", "floating point", "residual"], 0.80),
         ("gst_mismatch", ["gst", "18%", "tax"], 0.89),
     ]

@@ -110,21 +110,25 @@ def _identify_kb_topic(audit_text: str, status: str) -> Optional[str]:
     Identify the most relevant KB topic by matching keywords in audit trail.
 
     This is a simple heuristic — could be replaced with embeddings later.
+    Order matters: more specific/unambiguous patterns should be checked first.
     """
     audit_lower = audit_text.lower()
 
-    # Topic keyword mappings (more specific patterns first)
-    topic_keywords = {
-        'settlement_lag': ['days after settlement', 'delayed', 't+3', 't+4', 't+5', 't+6', 't+7'],
-        'duplicate_batch': ['duplicate', 'same utr', 'multiple credits', 'overlapping utrs'],
-        'partial_hold': ['partial_hold', 'withheld', 'reserve'],
-        'fee_mismatch': ['fee mismatch', 'fee variance', 'deviat', 'threshold'],
-        'orphan_bank_credit': ['orphan', 'no matching settlement', 'unmatched credit'],
-        'missing_bank_credit': ['no bank credit', 'no credit found', 'missing'],
-        'refund_not_netted': ['shortage', 'short by', 'unexplained', 'refund'],
-        'currency_rounding': ['rounding', 'paise', 'floating point'],
-        'gl_account_mapping': ['account', 'gl'],
-    }
+    # Topic keyword mappings, ordered by specificity:
+    # 1. Most specific patterns (least likely to false-match)
+    # 2. Refund-related before generic "fee" (avoid false matches on "fee" in "refund" contexts)
+    # 3. Fallback patterns
+    topic_keywords_ordered = [
+        ('settlement_lag', ['days after settlement', 'delayed', 't+3', 't+4', 't+5', 't+6', 't+7']),
+        ('duplicate_batch', ['duplicate', 'same utr', 'multiple credits', 'overlapping utrs']),
+        ('orphan_bank_credit', ['orphan', 'no matching settlement', 'unmatched credit']),
+        ('missing_bank_credit', ['no bank credit', 'no credit found', 'missing']),
+        ('refund_not_netted', ['shortage', 'short by', 'unexplained', 'refund']),  # Before partial_hold to avoid false match on "reserve"
+        ('partial_hold', ['partial_hold', 'withheld', 'reserve']),
+        ('fee_mismatch', ['fee mismatch', 'fee variance', 'deviat', 'threshold']),
+        ('currency_rounding', ['rounding', 'paise', 'floating point']),
+        ('gl_account_mapping', ['account', 'gl']),
+    ]
 
     # Status-based hints if audit trail is ambiguous
     status_hints = {
@@ -134,8 +138,8 @@ def _identify_kb_topic(audit_text: str, status: str) -> Optional[str]:
         'unresolved': 'missing_bank_credit',  # Often missing credits
     }
 
-    # Check keywords first
-    for topic, keywords in topic_keywords.items():
+    # Check keywords first (in priority order)
+    for topic, keywords in topic_keywords_ordered:
         if any(kw in audit_lower for kw in keywords):
             return topic
 

@@ -2,20 +2,20 @@
   "timestamp": "2026-09-02T12:00:00Z",
   "reconciliation_metrics": {
     "total_orders": 250,
-    "resolved_count": 232,
-    "match_rate_percent": 92.8,
+    "resolved_count": 236,
+    "match_rate_percent": 94.4,
     "status_breakdown": {
-      "matched": 178,
-      "partial_hold": 18,
+      "matched": 176,
+      "partial_hold": 24,
       "settlement_lag": 36,
-      "needs_review": 18
+      "needs_review": 14
     }
   },
   "classification_metrics": {
-    "total_agent_cases": 18,
-    "overall_accuracy": 0.333,
+    "total_agent_cases": 14,
+    "overall_accuracy": 0.429,
     "per_reason_metrics": {
-      "fee_mismatch": {
+      "partial_hold": {
         "precision": 0.0,
         "recall": 0.0,
         "f1_score": 0.0,
@@ -25,7 +25,13 @@
         "precision": 0.0,
         "recall": 0.0,
         "f1_score": 0.0,
-        "support": 12
+        "support": 6
+      },
+      "fee_mismatch": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0,
+        "support": 2
       },
       "duplicate_batch": {
         "precision": 1.0,
@@ -35,28 +41,35 @@
       }
     },
     "confusion_matrix": {
+      "partial_hold": {
+        "fee_mismatch": 2,
+        "refund_not_netted": 6,
+        "partial_hold": 0,
+        "duplicate_batch": 0
+      },
       "duplicate_batch": {
         "duplicate_batch": 6,
-        "fee_mismatch": 0,
-        "refund_not_netted": 0
-      },
-      "fee_mismatch": {
-        "refund_not_netted": 12,
-        "fee_mismatch": 0,
-        "duplicate_batch": 0
+        "partial_hold": 0,
+        "refund_not_netted": 0,
+        "fee_mismatch": 0
       },
       "refund_not_netted": {
         "refund_not_netted": 0,
+        "fee_mismatch": 0,
+        "duplicate_batch": 0
+      },
+      "fee_mismatch": {
+        "fee_mismatch": 0,
         "duplicate_batch": 0
       }
     }
   },
   "confidence_metrics": {
     "high_confidence_threshold": 0.7,
-    "high_confidence_count": 18,
-    "high_confidence_accuracy": 0.333,
-    "all_confidence_count": 18,
-    "all_confidence_accuracy": 0.333
+    "high_confidence_count": 14,
+    "high_confidence_accuracy": 0.429,
+    "all_confidence_count": 14,
+    "all_confidence_accuracy": 0.429
   },
   "unresolved_cases_count": 0,
   "unresolved_cases": []

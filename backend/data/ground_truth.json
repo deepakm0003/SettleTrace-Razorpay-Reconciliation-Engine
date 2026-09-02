@@ -193,27 +193,27 @@
   },
   "ORD00049": {
     "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "expected_exception_reason": null
   },
   "ORD00050": {
-    "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "scenario": "fee_misconfig_order",
+    "expected_exception_reason": "fee_mismatch"
   },
   "ORD00051": {
     "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "expected_exception_reason": null
   },
   "ORD00052": {
     "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "expected_exception_reason": null
   },
   "ORD00053": {
     "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "expected_exception_reason": null
   },
   "ORD00054": {
     "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "expected_exception_reason": null
   },
   "ORD00055": {
     "scenario": "duplicate_batch",
@@ -433,27 +433,27 @@
   },
   "ORD00109": {
     "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "expected_exception_reason": null
   },
   "ORD00110": {
     "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "expected_exception_reason": null
   },
   "ORD00111": {
     "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "expected_exception_reason": null
   },
   "ORD00112": {
     "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "expected_exception_reason": null
   },
   "ORD00113": {
-    "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "scenario": "fee_misconfig_order",
+    "expected_exception_reason": "fee_mismatch"
   },
   "ORD00114": {
     "scenario": "fee_misconfig",
-    "expected_exception_reason": "batch_level"
+    "expected_exception_reason": null
   },
   "ORD00115": {
     "scenario": "clean",

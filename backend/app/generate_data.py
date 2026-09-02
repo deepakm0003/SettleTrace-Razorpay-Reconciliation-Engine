@@ -148,22 +148,28 @@ def apply_scenario_logic(
     batch_gross = 0.0
     batch_net = 0.0
     
+    # Pick one order to have fee_misconfig (if applicable)
+    fee_misconfig_order = random.choice(batch_orders) if scenario == "fee_misconfig" else None
+    
     for order in batch_orders:
         fee, gst, net = calculate_fees(order.gross_amount)
         
         # Inject fee_misconfig on ONE random order in the batch
-        if scenario == "fee_misconfig" and order == random.choice(batch_orders):
+        if scenario == "fee_misconfig" and order == fee_misconfig_order:
             fee = round(fee * 1.60, 2)  # 60% too high
             gst = round(fee * GST_ON_FEE_RATE, 2)
             net = round(order.gross_amount - fee - gst, 2)
             ground_truth[order.order_id] = {
-                "scenario": scenario,
+                "scenario": "fee_misconfig_order",  # Mark specifically as the fee-inflated order
                 "expected_exception_reason": ExceptionReason.fee_mismatch.value,
             }
         else:
+            # All other orders in any batch
+            # - fee_misconfig: non-modified orders are actually clean (no exception)
+            # - refund_netted/duplicate/etc: batch-level scenarios affect all orders
             ground_truth[order.order_id] = {
                 "scenario": scenario,
-                "expected_exception_reason": None if scenario == "clean" else "batch_level",
+                "expected_exception_reason": None if scenario == "fee_misconfig" else ("batch_level" if scenario != "clean" else None),
             }
         
         settlements.append(SettlementLine(
