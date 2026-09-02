@@ -15,11 +15,11 @@
     "total_agent_cases": 18,
     "overall_accuracy": 0.333,
     "per_reason_metrics": {
-      "duplicate_batch": {
-        "precision": 1.0,
-        "recall": 1.0,
-        "f1_score": 1.0,
-        "support": 6
+      "fee_mismatch": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0,
+        "support": 0
       },
       "refund_not_netted": {
         "precision": 0.0,
@@ -27,27 +27,27 @@
         "f1_score": 0.0,
         "support": 12
       },
-      "fee_mismatch": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0,
-        "support": 0
+      "duplicate_batch": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 6
       }
     },
     "confusion_matrix": {
       "duplicate_batch": {
         "duplicate_batch": 6,
-        "refund_not_netted": 0,
-        "fee_mismatch": 0
+        "fee_mismatch": 0,
+        "refund_not_netted": 0
       },
       "fee_mismatch": {
         "refund_not_netted": 12,
-        "duplicate_batch": 0,
-        "fee_mismatch": 0
+        "fee_mismatch": 0,
+        "duplicate_batch": 0
       },
       "refund_not_netted": {
         "refund_not_netted": 0,
-        "fee_mismatch": 0
+        "duplicate_batch": 0
       }
     }
   },
