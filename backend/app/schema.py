@@ -33,6 +33,8 @@ class ExceptionReason(str, Enum):
     missing_bank_credit  = "missing_bank_credit"
     orphan_bank_credit   = "orphan_bank_credit"
     currency_rounding    = "currency_rounding"
+    settlement_lag       = "settlement_lag"      # credit arrived outside T+1/T+2 window
+    partial_hold         = "partial_hold"        # Razorpay withheld 5-10% as reserve
     unknown              = "unknown"
 
 

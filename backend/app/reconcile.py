@@ -286,32 +286,54 @@ def run_reconciliation(
         if abs(delta_batch) <= PAISA_TOLERANCE:
             if days_to_credit > SETTLEMENT_LAG_DAYS:
                 status = MatchStatus.settlement_lag
-                exception_reason = None  # Not an error, just delayed
-                explanation = f"Bank credit delayed by {days_to_credit} days (expected T+{SETTLEMENT_LAG_DAYS})"
-                audit_trail.append(f"Status: settlement_lag ({days_to_credit} days)")
+                exception_reason = ExceptionReason.settlement_lag
+                explanation = (
+                    f"Amount matches but bank credit arrived {days_to_credit} days "
+                    f"after settlement date (normal window: T+{SETTLEMENT_LAG_DAYS})"
+                )
+                audit_trail.append(f"Status: settlement_lag ({days_to_credit} days after settlement)")
             else:
-                audit_trail.append("Status: matched (within tolerance)")
+                # Genuine clean match
+                audit_trail.append("Status: matched (amount within ₹0.01 tolerance, timing T+1/T+2)")
         else:
             # Check for partial hold pattern (5-10% withheld)
             if delta_batch < 0:  # short credit
                 shortage_pct = abs(delta_batch) / expected_batch_net
                 if RESERVE_HOLD_MIN <= shortage_pct <= RESERVE_HOLD_MAX:
                     status = MatchStatus.partial_hold
-                    exception_reason = None  # Expected behavior
-                    explanation = f"Reserve hold detected: {shortage_pct:.1%} of batch net withheld"
-                    audit_trail.append(f"Status: partial_hold ({shortage_pct:.1%} withheld)")
+                    exception_reason = ExceptionReason.partial_hold
+                    explanation = (
+                        f"Reserve hold detected: ₹{abs(delta_batch):,.2f} "
+                        f"({shortage_pct:.1%}) withheld from batch net"
+                    )
+                    audit_trail.append(
+                        f"Status: partial_hold — {shortage_pct:.1%} withheld "
+                        f"(₹{abs(delta_batch):,.2f})"
+                    )
                 else:
-                    # Unexplained shortage
+                    # Unexplained shortage — likely refund netted in same cycle
                     status = MatchStatus.needs_review
                     exception_reason = ExceptionReason.refund_not_netted
-                    explanation = f"Bank credit short by ₹{abs(delta_batch):,.2f} ({shortage_pct:.1%})"
-                    audit_trail.append(f"Status: needs_review (unexplained shortage)")
+                    explanation = (
+                        f"Bank credit short by ₹{abs(delta_batch):,.2f} ({shortage_pct:.1%}) "
+                        f"— outside reserve-hold range (5-10%); possible refund netted in batch"
+                    )
+                    audit_trail.append(
+                        f"Status: needs_review — shortage ₹{abs(delta_batch):,.2f} "
+                        f"({shortage_pct:.1%}), not a reserve pattern"
+                    )
             else:
-                # Excess credit
+                # Excess credit — unexpected
                 status = MatchStatus.needs_review
                 exception_reason = ExceptionReason.unknown
-                explanation = f"Bank credit exceeds expected by ₹{delta_batch:,.2f}"
-                audit_trail.append(f"Status: needs_review (excess credit)")
+                explanation = (
+                    f"Bank credit exceeds expected batch net by ₹{delta_batch:,.2f} "
+                    f"— possible duplicate or misrouted credit"
+                )
+                audit_trail.append(
+                    f"Status: needs_review — excess of ₹{delta_batch:,.2f} "
+                    f"has no known cause"
+                )
         
         # Calculate per-order expected net
         expected_net = settlement.net_amount
@@ -362,40 +384,44 @@ def run_reconciliation(
 
 
 def print_summary(results: List[ReconciliationResult]) -> None:
-    """Print reconciliation summary."""
-    # Filter out orphan pseudo-results for order-level stats
+    """Print reconciliation summary — every non-matched status shows its exception_reason."""
     order_results = [r for r in results if not r.order_id.startswith("ORPHAN-")]
-    
-    status_counts = defaultdict(int)
-    exception_counts = defaultdict(int)
-    
+
+    status_counts: Dict[str, int] = defaultdict(int)
+    # Per-status breakdown of exception_reasons
+    status_exception_map: Dict[str, Dict[str, int]] = defaultdict(lambda: defaultdict(int))
+
     for r in results:
         status_counts[r.status.value] += 1
-        if r.exception_reason:
-            exception_counts[r.exception_reason.value] += 1
-    
+        reason_label = r.exception_reason.value if r.exception_reason else "—"
+        status_exception_map[r.status.value][reason_label] += 1
+
     total_orders = len(order_results)
     matched = status_counts.get(MatchStatus.matched.value, 0)
     match_rate = (matched / total_orders * 100) if total_orders > 0 else 0
-    
-    print("\n" + "=" * 60)
+
+    print("\n" + "=" * 65)
     print("RECONCILIATION SUMMARY")
-    print("=" * 60)
-    print(f"Total orders processed: {total_orders}")
-    print(f"Matched orders: {matched} ({match_rate:.1f}%)")
+    print("=" * 65)
+    print(f"Total orders processed : {total_orders}")
+    print(f"Matched orders         : {matched} ({match_rate:.1f}%)")
     print()
-    print("Status breakdown:")
-    for status, count in sorted(status_counts.items()):
-        pct = (count / len(results) * 100) if len(results) > 0 else 0
-        print(f"  {status:20s}: {count:3d} ({pct:5.1f}%)")
-    
-    if exception_counts:
-        print()
-        print("Exception reasons:")
-        for reason, count in sorted(exception_counts.items()):
-            print(f"  {reason:25s}: {count:3d}")
-    
-    print("=" * 60)
+    print(f"{'Status':<22} {'Count':>5}  {'%':>5}  Exception reason(s)")
+    print("-" * 65)
+    for status in sorted(status_counts.keys()):
+        count = status_counts[status]
+        pct = count / len(results) * 100
+        reasons = status_exception_map[status]
+        # First reason on same line, overflow reasons on continuation lines
+        reason_parts = [
+            f"{reason} ×{cnt}" if cnt > 1 else reason
+            for reason, cnt in sorted(reasons.items())
+        ]
+        first = reason_parts[0] if reason_parts else ""
+        print(f"  {status:<20} {count:>5}  {pct:>4.1f}%  {first}")
+        for extra in reason_parts[1:]:
+            print(f"  {'':20} {'':>5}  {'':>5}  {extra}")
+    print("=" * 65)
 
 
 def main():
