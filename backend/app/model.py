@@ -75,13 +75,14 @@ def _mock_llm(prompt: str) -> str:
         ("duplicate_batch", ["duplicate", "same utr", "multiple credits", "two credits"], 0.93),
         ("orphan_bank_credit", ["orphan", "no settlement", "unmatched credit", "no batch", "no matching settlement"], 0.88),
         ("missing_bank_credit", ["missing", "no bank credit", "no credit found"], 0.87),
-        ("partial_hold", ["partial_hold", "reserve", "withheld", "hold"], 0.92),
-        ("fee_mismatch", ["fee_mismatch", "fee variance", "deviat", "threshold"], 0.90),
+        # Fee and GST must come before partial_hold to avoid false matches on "hold"
+        ("fee_mismatch", ["fee mismatch", "fee variance", "deviat", "threshold"], 0.90),
+        ("gst_mismatch", ["gst", "18%", "tax"], 0.89),
+        ("partial_hold", ["partial_hold", "reserve", "withheld"], 0.92),  # Removed "hold" to avoid matching "hold_reason"
         # Refund patterns: LOW confidence (0.45) because the mock is known to misclassify
         # refund_not_netted as fee_mismatch or partial_hold due to keyword overlap
         ("refund_not_netted", ["refund", "netted", "possible refund", "outside reserve", "shortage", "short by"], 0.45),
         ("currency_rounding", ["rounding", "paise", "floating point", "residual"], 0.80),
-        ("gst_mismatch", ["gst", "18%", "tax"], 0.89),
     ]
 
     # Match keywords in order of specificity
