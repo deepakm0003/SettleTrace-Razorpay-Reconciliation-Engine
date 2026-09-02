@@ -309,6 +309,8 @@ def print_evaluation_report(metrics: Dict[str, Any]) -> None:
     for status, count in sorted(recon["status_breakdown"].items()):
         pct = (count / recon["total_orders"] * 100)
         print(f"     {status:20s}: {count:3d} ({pct:5.1f}%)")
+    print(f"\n   Note: Orphan bank credits (batch-level anomalies with no matching settlement)")
+    print(f"   are tracked separately and not included in order-level metrics above.")
     
     # 2. Classification accuracy
     classif = metrics["classification_metrics"]

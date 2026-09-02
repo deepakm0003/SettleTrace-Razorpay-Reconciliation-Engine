@@ -296,10 +296,15 @@ def run_reconciliation(
                 # Genuine clean match
                 audit_trail.append("Status: matched (amount within ₹0.01 tolerance, timing T+1/T+2)")
         else:
-            # Check for partial hold pattern (5-10% withheld)
+            # Check for partial hold pattern (5-10% withheld AND settlement marked with hold)
             if delta_batch < 0:  # short credit
                 shortage_pct = abs(delta_batch) / expected_batch_net
-                if RESERVE_HOLD_MIN <= shortage_pct <= RESERVE_HOLD_MAX:
+                # Only classify as partial_hold if BOTH conditions are true:
+                # 1. Shortage is in 5-10% range (reserve-hold convention)
+                # 2. Settlement line explicitly marked is_partial_hold=True
+                # This prevents false positives where refund shortfalls happen to land in the same range
+                if (RESERVE_HOLD_MIN <= shortage_pct <= RESERVE_HOLD_MAX and 
+                    settlement.is_partial_hold):
                     status = MatchStatus.partial_hold
                     exception_reason = ExceptionReason.partial_hold
                     explanation = (
@@ -311,16 +316,17 @@ def run_reconciliation(
                         f"(₹{abs(delta_batch):,.2f})"
                     )
                 else:
-                    # Unexplained shortage — likely refund netted in same cycle
+                    # Unexplained shortage — likely refund netted in same cycle, or hold without flag
                     status = MatchStatus.needs_review
                     exception_reason = ExceptionReason.refund_not_netted
                     explanation = (
                         f"Bank credit short by ₹{abs(delta_batch):,.2f} ({shortage_pct:.1%}) "
-                        f"— outside reserve-hold range (5-10%); possible refund netted in batch"
+                        f"— outside reserve-hold pattern or settlement not marked with hold; "
+                        f"possible refund netted in batch or manual adjustment"
                     )
                     audit_trail.append(
                         f"Status: needs_review — shortage ₹{abs(delta_batch):,.2f} "
-                        f"({shortage_pct:.1%}), not a reserve pattern"
+                        f"({shortage_pct:.1%}), not confirmed as reserve hold"
                     )
             else:
                 # Excess credit — unexpected

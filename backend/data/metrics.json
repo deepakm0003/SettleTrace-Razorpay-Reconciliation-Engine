@@ -2,74 +2,74 @@
   "timestamp": "2026-09-02T12:00:00Z",
   "reconciliation_metrics": {
     "total_orders": 250,
-    "resolved_count": 236,
-    "match_rate_percent": 94.4,
+    "resolved_count": 230,
+    "match_rate_percent": 92.0,
     "status_breakdown": {
       "matched": 176,
-      "partial_hold": 24,
+      "partial_hold": 18,
       "settlement_lag": 36,
-      "needs_review": 14
+      "needs_review": 20
     }
   },
   "classification_metrics": {
-    "total_agent_cases": 14,
-    "overall_accuracy": 0.429,
+    "total_agent_cases": 20,
+    "overall_accuracy": 0.3,
     "per_reason_metrics": {
-      "partial_hold": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0,
-        "support": 0
-      },
-      "refund_not_netted": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0,
-        "support": 6
-      },
       "fee_mismatch": {
         "precision": 0.0,
         "recall": 0.0,
         "f1_score": 0.0,
         "support": 2
       },
+      "partial_hold": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0,
+        "support": 0
+      },
       "duplicate_batch": {
         "precision": 1.0,
         "recall": 1.0,
         "f1_score": 1.0,
         "support": 6
+      },
+      "refund_not_netted": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0,
+        "support": 12
       }
     },
     "confusion_matrix": {
       "partial_hold": {
         "fee_mismatch": 2,
-        "refund_not_netted": 6,
+        "refund_not_netted": 12,
         "partial_hold": 0,
         "duplicate_batch": 0
       },
       "duplicate_batch": {
         "duplicate_batch": 6,
-        "partial_hold": 0,
-        "refund_not_netted": 0,
-        "fee_mismatch": 0
-      },
-      "refund_not_netted": {
-        "refund_not_netted": 0,
         "fee_mismatch": 0,
-        "duplicate_batch": 0
+        "partial_hold": 0,
+        "refund_not_netted": 0
       },
       "fee_mismatch": {
         "fee_mismatch": 0,
-        "duplicate_batch": 0
+        "partial_hold": 0,
+        "duplicate_batch": 0,
+        "refund_not_netted": 0
+      },
+      "refund_not_netted": {
+        "refund_not_netted": 0
       }
     }
   },
   "confidence_metrics": {
     "high_confidence_threshold": 0.7,
-    "high_confidence_count": 14,
-    "high_confidence_accuracy": 0.429,
-    "all_confidence_count": 14,
-    "all_confidence_accuracy": 0.429
+    "high_confidence_count": 20,
+    "high_confidence_accuracy": 0.3,
+    "all_confidence_count": 20,
+    "all_confidence_accuracy": 0.3
   },
   "unresolved_cases_count": 0,
   "unresolved_cases": []
