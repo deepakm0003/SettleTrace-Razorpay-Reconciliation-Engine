@@ -1,0 +1,1002 @@
+{
+  "ORD00001": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00002": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00003": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00004": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00005": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00006": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00007": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00008": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00009": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00010": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00011": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00012": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00013": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00014": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00015": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00016": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00017": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00018": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00019": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00020": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00021": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00022": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00023": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00024": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00025": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00026": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00027": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00028": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00029": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00030": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00031": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00032": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00033": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00034": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00035": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00036": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00037": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00038": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00039": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00040": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00041": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00042": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00043": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00044": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00045": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00046": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00047": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00048": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00049": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00050": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00051": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00052": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00053": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00054": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00055": {
+    "scenario": "duplicate_batch",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00056": {
+    "scenario": "duplicate_batch",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00057": {
+    "scenario": "duplicate_batch",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00058": {
+    "scenario": "duplicate_batch",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00059": {
+    "scenario": "duplicate_batch",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00060": {
+    "scenario": "duplicate_batch",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00061": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00062": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00063": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00064": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00065": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00066": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00067": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00068": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00069": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00070": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00071": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00072": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00073": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00074": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00075": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00076": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00077": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00078": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00079": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00080": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00081": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00082": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00083": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00084": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00085": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00086": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00087": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00088": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00089": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00090": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00091": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00092": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00093": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00094": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00095": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00096": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00097": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00098": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00099": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00100": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00101": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00102": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00103": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00104": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00105": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00106": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00107": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00108": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00109": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00110": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00111": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00112": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00113": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00114": {
+    "scenario": "fee_misconfig",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00115": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00116": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00117": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00118": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00119": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00120": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00121": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00122": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00123": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00124": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00125": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00126": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00127": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00128": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00129": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00130": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00131": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00132": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00133": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00134": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00135": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00136": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00137": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00138": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00139": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00140": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00141": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00142": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00143": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00144": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00145": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00146": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00147": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00148": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00149": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00150": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00151": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00152": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00153": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00154": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00155": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00156": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00157": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00158": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00159": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00160": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00161": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00162": {
+    "scenario": "partial_hold",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00163": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00164": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00165": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00166": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00167": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00168": {
+    "scenario": "refund_netted",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00169": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00170": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00171": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00172": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00173": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00174": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00175": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00176": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00177": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00178": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00179": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00180": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00181": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00182": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00183": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00184": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00185": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00186": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00187": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00188": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00189": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00190": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00191": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00192": {
+    "scenario": "orphan_credit",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00193": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00194": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00195": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00196": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00197": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00198": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00199": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00200": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00201": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00202": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00203": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00204": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00205": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00206": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00207": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00208": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00209": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00210": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00211": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00212": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00213": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00214": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00215": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00216": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00217": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00218": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00219": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00220": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00221": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00222": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00223": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00224": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00225": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00226": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00227": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00228": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00229": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00230": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00231": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00232": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00233": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00234": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00235": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00236": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00237": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00238": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00239": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00240": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00241": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00242": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00243": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00244": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00245": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00246": {
+    "scenario": "settlement_lag",
+    "expected_exception_reason": "batch_level"
+  },
+  "ORD00247": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00248": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00249": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  },
+  "ORD00250": {
+    "scenario": "clean",
+    "expected_exception_reason": null
+  }
+}
