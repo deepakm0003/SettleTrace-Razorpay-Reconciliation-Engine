@@ -3,3 +3,10 @@ __pycache__/
 *.pyc
 .env
 node_modules/
+
+# Documentation files (not for GitHub)
+START_HERE.md
+SUBMISSION_READY.md
+DEMO_WORKFLOW.md
+pitch_video.md
+PITCH_VIDEO.md

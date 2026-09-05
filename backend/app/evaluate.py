@@ -11,6 +11,7 @@ import json
 from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Any, Tuple
+from datetime import datetime
 
 from app.reconcile import load_orders, load_settlements, load_bank_credits, run_reconciliation
 from app.categorize import explain_exception
@@ -90,14 +91,30 @@ def run_full_pipeline() -> Tuple[List[Dict[str, Any]], Dict[str, Dict[str, Any]]
     print(f"  Deterministic results: {len(deterministic)}")
     print(f"  Needs agent review: {len(needs_agent)}")
     
-    print("Running categorization agent...")
+    print(f"Running categorization agent on {len(needs_agent)} cases (5 parallel workers)...")
     if needs_agent:
-        categorized = []
-        for result in needs_agent:
-            explained = explain_exception(result)
-            categorized.append(explained)
-        
-        # Combine deterministic + agent results
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+
+        categorized = [None] * len(needs_agent)
+        completed   = [0]
+        lock        = __import__("threading").Lock()
+
+        def classify_one(idx_result):
+            idx, result = idx_result
+            out = explain_exception(result)
+            with lock:
+                completed[0] += 1
+                if completed[0] % 25 == 0 or completed[0] == 1:
+                    print(f"  [{completed[0]}/{len(needs_agent)}] done — last: {result['order_id']}")
+            return idx, out
+
+        with ThreadPoolExecutor(max_workers=5) as pool:
+            futures = {pool.submit(classify_one, (i, r)): i
+                       for i, r in enumerate(needs_agent)}
+            for fut in as_completed(futures):
+                idx, out = fut.result()
+                categorized[idx] = out
+
         final_results = deterministic + categorized
     else:
         final_results = deterministic
@@ -302,7 +319,7 @@ def print_evaluation_report(metrics: Dict[str, Any]) -> None:
     
     # 1. Reconciliation match rate
     recon = metrics["reconciliation_metrics"]
-    print(f"\n📊 RECONCILIATION PERFORMANCE")
+    print(f"\nRECONCILIATION PERFORMANCE")
     print(f"   Total orders processed    : {recon['total_orders']}")
     print(f"   Deterministically resolved: {recon['resolved_count']} ({recon['match_rate_percent']}%)")
     print(f"   Status breakdown:")
@@ -314,7 +331,7 @@ def print_evaluation_report(metrics: Dict[str, Any]) -> None:
     
     # 2. Classification accuracy
     classif = metrics["classification_metrics"]
-    print(f"\n🎯 AGENT CLASSIFICATION ACCURACY")
+    print(f"\nAGENT CLASSIFICATION ACCURACY")
     print(f"   Cases requiring agent     : {classif['total_agent_cases']}")
     print(f"   Overall accuracy          : {classif['overall_accuracy']:.1%}")
     
@@ -327,7 +344,7 @@ def print_evaluation_report(metrics: Dict[str, Any]) -> None:
     
     # 3. Confidence coverage
     conf = metrics["confidence_metrics"]
-    print(f"\n🔍 CONFIDENCE-ROUTED COVERAGE")
+    print(f"\nCONFIDENCE-ROUTED COVERAGE")
     print(f"   High confidence (≥0.7)    : {conf['high_confidence_count']} cases, {conf['high_confidence_accuracy']:.1%} accuracy")
     print(f"   All confidence levels     : {conf['all_confidence_count']} cases, {conf['all_confidence_accuracy']:.1%} accuracy")
     if conf["high_confidence_count"] > 0:
@@ -336,7 +353,7 @@ def print_evaluation_report(metrics: Dict[str, Any]) -> None:
     
     # 4. Unresolved cases
     unresolved = metrics["unresolved_cases"]
-    print(f"\n⚠️  CASES REQUIRING MANUAL REVIEW")
+    print(f"\nCASES REQUIRING MANUAL REVIEW")
     print(f"   Count: {len(unresolved)}")
     if unresolved:
         print(f"   Details:")
@@ -354,7 +371,7 @@ def write_metrics_json(metrics: Dict[str, Any], filepath: Path) -> None:
     """Write metrics to JSON file for FastAPI serving."""
     # Prepare JSON-serializable version
     json_metrics = {
-        "timestamp": "2026-09-02T12:00:00Z",  # Would be datetime.now().isoformat() in real use
+        "timestamp": datetime.now().isoformat(),
         "reconciliation_metrics": metrics["reconciliation_metrics"],
         "classification_metrics": metrics["classification_metrics"],
         "confidence_metrics": metrics["confidence_metrics"],
@@ -376,7 +393,7 @@ def write_metrics_json(metrics: Dict[str, Any], filepath: Path) -> None:
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(json_metrics, f, indent=2)
     
-    print(f"\n📄 Metrics written to {filepath}")
+    print(f"\nMetrics written to {filepath}")
 
 
 def main() -> Dict[str, Any]:

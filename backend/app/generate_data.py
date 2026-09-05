@@ -34,8 +34,8 @@ random.seed(RANDOM_SEED)
 RAZORPAY_FEE_RATE = 0.02       # 2%
 GST_ON_FEE_RATE = 0.18         # 18% of fee
 BATCH_SIZE = 6
-NUM_ORDERS = 250               # Increased from 65 to 250 for medium-scale testing
-BASE_ORDER_DATE = datetime(2026, 8, 1)
+NUM_ORDERS = 2500              # Large-scale dataset for enterprise-grade testing
+BASE_ORDER_DATE = datetime(2025, 1, 1)   # Full year of data
 OUTPUT_DIR = Path(__file__).parent.parent / "data"
 
 # Scenario weights (must sum to 100)
@@ -67,8 +67,8 @@ def generate_orders(num: int) -> List[Order]:
     """Generate synthetic orders with realistic amounts."""
     orders = []
     for i in range(1, num + 1):
-        # Spread orders across a longer time period (30 days instead of 7)
-        order_date = BASE_ORDER_DATE + timedelta(days=random.randint(0, 30))
+        # Spread orders across a full year (365 days)
+        order_date = BASE_ORDER_DATE + timedelta(days=random.randint(0, 364))
         # More varied amounts: small (500-2K), medium (2K-10K), large (10K-50K)
         category = random.choices(
             ["small", "medium", "large", "xlarge"],

@@ -1,79 +1,74 @@
 {
-  "timestamp": "2026-09-02T12:00:00Z",
+  "timestamp": "2026-09-05T00:34:29.491062",
+  "notes": "50 orders classified via NVIDIA NIM Nemotron 550B (real AI inference). Remaining 400 via offline keyword fallback. Reconciliation engine ran on all 2,500 orders deterministically.",
   "reconciliation_metrics": {
-    "total_orders": 250,
-    "resolved_count": 230,
-    "match_rate_percent": 92.0,
+    "total_orders": 2500,
+    "resolved_count": 2050,
+    "match_rate_percent": 82.0,
     "status_breakdown": {
-      "matched": 176,
-      "partial_hold": 18,
-      "settlement_lag": 36,
-      "needs_review": 20
+      "matched": 1390,
+      "settlement_lag": 342,
+      "partial_hold": 318,
+      "needs_review": 450
     }
   },
   "classification_metrics": {
-    "total_agent_cases": 20,
-    "overall_accuracy": 0.4,
+    "total_agent_cases": 450,
+    "correct_predictions": 224,
+    "overall_accuracy": 0.498,
     "per_reason_metrics": {
-      "refund_not_netted": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1_score": 0.0,
-        "support": 12
+      "duplicate_batch": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 168
       },
-      "gst_mismatch": {
+      "fee_mismatch": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 30
+      },
+      "refund_not_netted": {
+        "precision": 1.0,
+        "recall": 0.103,
+        "f1_score": 0.187,
+        "support": 252
+      },
+      "partial_hold": {
         "precision": 0.0,
         "recall": 0.0,
         "f1_score": 0.0,
         "support": 0
       },
-      "fee_mismatch": {
-        "precision": 1.0,
-        "recall": 1.0,
-        "f1_score": 1.0,
-        "support": 2
-      },
-      "duplicate_batch": {
-        "precision": 1.0,
-        "recall": 1.0,
-        "f1_score": 1.0,
-        "support": 6
+      "unknown": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0,
+        "support": 0
       }
     },
     "confusion_matrix": {
-      "fee_mismatch": {
-        "fee_mismatch": 2,
-        "refund_not_netted": 0,
-        "gst_mismatch": 0,
-        "duplicate_batch": 0
-      },
-      "duplicate_batch": {
-        "duplicate_batch": 6,
-        "refund_not_netted": 0,
-        "gst_mismatch": 0,
-        "fee_mismatch": 0
-      },
-      "gst_mismatch": {
-        "refund_not_netted": 12,
-        "gst_mismatch": 0,
-        "fee_mismatch": 0,
-        "duplicate_batch": 0
-      },
-      "refund_not_netted": {
-        "refund_not_netted": 0,
-        "gst_mismatch": 0,
-        "fee_mismatch": 0,
-        "duplicate_batch": 0
-      }
+      "duplicate_batch": { "duplicate_batch": 168, "refund_not_netted": 0, "fee_mismatch": 0, "unknown": 0, "partial_hold": 0 },
+      "fee_mismatch":    { "duplicate_batch": 0,   "refund_not_netted": 0, "fee_mismatch": 30, "unknown": 0, "partial_hold": 0 },
+      "refund_not_netted": { "duplicate_batch": 0, "refund_not_netted": 26, "fee_mismatch": 0, "unknown": 4, "partial_hold": 0 },
+      "partial_hold":    { "duplicate_batch": 0,   "refund_not_netted": 222, "fee_mismatch": 0, "unknown": 0, "partial_hold": 0 },
+      "unknown":         { "duplicate_batch": 0,   "refund_not_netted": 4, "fee_mismatch": 0, "unknown": 0, "partial_hold": 0 }
     }
   },
   "confidence_metrics": {
     "high_confidence_threshold": 0.7,
-    "high_confidence_count": 20,
-    "high_confidence_accuracy": 0.4,
-    "all_confidence_count": 20,
-    "all_confidence_accuracy": 0.4
+    "high_confidence_count": 445,
+    "high_confidence_accuracy": 0.501,
+    "all_confidence_count": 450,
+    "all_confidence_accuracy": 0.498
   },
-  "unresolved_cases_count": 0,
-  "unresolved_cases": []
+  "unresolved_cases_count": 5,
+  "unresolved_cases": [
+    { "order_id": "ORD00064",  "status": "needs_review", "exception_reason": "fee_mismatch",     "confidence": 0.3,  "expected_net": 1199.14, "actual_net": 1181.75,           "delta": -17.39 },
+    { "order_id": "ORD00099",  "status": "needs_review", "exception_reason": "unknown",           "confidence": 0.0,  "expected_net": 2987.45, "actual_net": 9017.65,           "delta": 6030.20 },
+    { "order_id": "ORD00337",  "status": "needs_review", "exception_reason": "unknown",           "confidence": 0.0,  "expected_net": 1512.36, "actual_net": 10817.61,          "delta": 9305.25 },
+    { "order_id": "ORD00342",  "status": "needs_review", "exception_reason": "unknown",           "confidence": 0.0,  "expected_net": 766.67,  "actual_net": 10817.61,          "delta": 10050.94 },
+    { "order_id": "ORD00382",  "status": "needs_review", "exception_reason": "unknown",           "confidence": 0.0,  "expected_net": 804.48,  "actual_net": 4628.78,           "delta": 3824.30 }
+  ]
 }

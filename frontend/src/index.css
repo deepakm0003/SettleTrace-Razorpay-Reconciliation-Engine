@@ -2,93 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 @layer base {
   body {
-    @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-gray-100;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    @apply bg-[#FDFBF7] text-gray-900 antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight;
+    font-family: 'Cal Sans', 'Inter', sans-serif;
   }
 }
 
 @layer components {
-  .stat-card {
-    @apply relative bg-gradient-to-br from-slate-700 to-slate-800 rounded-xl shadow-lg p-6 border border-slate-600 overflow-hidden;
-    transition: all 0.3s ease;
+  /* Sketch-style borders */
+  .sketch-border {
+    border: 2px solid #000;
+    border-radius: 12px;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.8);
   }
   
-  .stat-card::before {
+  .sketch-border:hover {
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.8);
+    transform: translate(-2px, -2px);
+    transition: all 0.2s ease;
+  }
+  
+  /* Hand-drawn button */
+  .btn-sketch {
+    @apply px-6 py-3 bg-[#0066FF] text-white font-bold rounded-xl relative overflow-hidden;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+    transition: all 0.2s ease;
+  }
+  
+  .btn-sketch:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  }
+  
+  .btn-sketch:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  }
+  
+  /* Organic shape backgrounds */
+  .blob-yellow {
+    background: linear-gradient(135deg, #FFE259 0%, #FFA751 100%);
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+  }
+  
+  .blob-blue {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 45% 55% 62% 38% / 53% 51% 49% 47%;
+  }
+  
+  .blob-pink {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 73% 27% 44% 56% / 49% 44% 56% 51%;
+  }
+  
+  /* Card with sketch style */
+  .card-sketch {
+    @apply bg-white border-2 border-black rounded-2xl p-6 relative;
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Wavy underline */
+  .wavy-underline {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .wavy-underline::after {
     content: '';
-    @apply absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-blue via-blue-400 to-cyan-400;
-    animation: slideIn 0.8s ease;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 8px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0,5 Q25,0 50,5 T100,5' fill='none' stroke='%230066FF' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+    background-size: 50px 10px;
   }
   
-  .stat-card:hover {
-    @apply border-accent-blue shadow-2xl shadow-accent-blue/20 transform -translate-y-1;
+  /* Doodle elements */
+  .doodle-arrow {
+    position: relative;
   }
   
-  .card {
-    @apply bg-gradient-to-br from-slate-700 to-slate-800 rounded-xl shadow-lg border border-slate-600 overflow-hidden backdrop-blur-sm;
+  .doodle-arrow::after {
+    content: '→';
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-15deg);
+    font-size: 2rem;
+    color: #0066FF;
   }
   
-  .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-accent-blue to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-accent-blue/50 transition-all duration-300 transform hover:scale-105;
+  /* Rough edges effect */
+  .rough-edges {
+    filter: url(#rough);
   }
   
-  .btn-secondary {
-    @apply px-6 py-3 bg-slate-700 text-gray-100 rounded-lg font-semibold hover:bg-slate-600 transition-all duration-300 border border-slate-600;
+  /* Animated gradient */
+  .gradient-shift {
+    background: linear-gradient(45deg, #0066FF, #00C9FF, #92FE9D, #00C9FF, #0066FF);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
   }
   
-  .badge-small {
-    @apply inline-block px-3 py-1 text-xs font-semibold rounded-full;
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
   
-  .glow-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-accent-blue via-blue-400 to-cyan-400;
-  }
-  
-  @keyframes slideIn {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 40px rgba(0, 102, 255, 0.5);
-    }
-  }
-  
-  .animate-fadeInUp {
-    animation: fadeInUp 0.6s ease-out;
-  }
-  
-  .pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
+  /* Scribble effect */
+  .scribble-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10,30 Q20,10 30,30 T50,30' stroke='%230066FF' stroke-width='1' fill='none' opacity='0.1'/%3E%3C/svg%3E");
+    background-repeat: repeat;
   }
 }
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
