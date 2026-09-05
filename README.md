@@ -12,8 +12,6 @@
 
 🌐 **Live Demo:** [https://settle-trace-razorpay-reconciliatio.vercel.app](https://settle-trace-razorpay-reconciliatio.vercel.app)
 
-[🚀 Quick Start](#-quick-start) • [📊 Features](#-features) • [🏗️ Architecture](#️-architecture) • [📈 Metrics](#-metrics) • [🎥 Demo](#-demo)
-
 </div>
 <img width="1896" height="911" alt="image" src="https://github.com/user-attachments/assets/e4e0d065-8dce-461a-a72d-7035484df423" />
 
