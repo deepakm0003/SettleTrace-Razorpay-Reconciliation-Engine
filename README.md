@@ -19,12 +19,14 @@ SettleTrace combines:
 4. **Premium Dashboard** — Razorpay-themed UI for triage and audit
 
 ### Key Numbers
-- **250 orders** across 42 settlement batches (medium-scale test data)
-- **92.8% deterministically resolved** (178 matched + 36 settlement_lag + 18 partial_hold)
-- **8% routed to agent** (20 orders requiring LLM review)
-- **40% agent accuracy** (mock mode; ~70% with real API)
-- **Zero API cost** in offline mock mode (local development)
-- **All 3 bugs fixed** during Day 2 evaluation (fee injection, refund false-positives, confidence calibration)
+- **2,500 orders** across 365 days (full year of data)
+- **82% deterministically resolved** (2,050 matched via rules)
+- **18% routed to agent** (450 orders requiring AI classification)
+- **49.8% agent accuracy** (50 real API calls + 400 mock fallback)
+- **F1=1.0** on duplicates and fee mismatches (perfect classification)
+- **F1=0.19** on refund_not_netted (documented limitation)
+- **$0 API cost** in offline mock mode
+- **Instant backend startup** (metrics pre-generated)
 
 ---
 
@@ -43,9 +45,16 @@ cd backend
 python -m venv venv
 source venv/Scripts/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-python -m app.generate_data    # Create 250 synthetic orders
-python -m app.evaluate         # Run full pipeline + metrics
+
+# IMPORTANT: Configure API keys for NVIDIA NIM
+cp .env.example .env
+# Edit .env and add your NVIDIA API keys (get from https://build.nvidia.com/)
+
+python -m app.generate_data    # Create 2,500 synthetic orders
+# Optional: python run_eval.py  # Run evaluation (50 real + 400 mock, takes 30+ min)
 ```
+
+> **Note:** The system works in offline mock mode without API keys, but accuracy is lower (~44%). With NVIDIA NIM keys, accuracy reaches ~50% (50 real inferences) or ~70%+ (full real inference).
 
 **2. Start Backend API**
 ```bash
