@@ -38,7 +38,7 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         "http://127.0.0.1:3000",
         "https://settle-trace-razorpay-reconciliatio.vercel.app",
-        "https://settle-trace-razorpay-reconciliation-engine-nv3g-elkzy365o.vercel.app",
+        "https://settle-trace-razorpay-reconciliatio-jade.vercel.app",
         "https://*.vercel.app",
     ],
     allow_credentials=True,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // API Base URL - points to Vercel backend deployment
-const API_BASE_URL = 'https://settle-trace-razorpay-reconciliation-engine-nv3g-elkzy365o.vercel.app';
+const API_BASE_URL = 'https://settle-trace-razorpay-reconciliatio-jade.vercel.app';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
